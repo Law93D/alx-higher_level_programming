@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def raise_exception_msg(message=""):
     class CustomNameError(NameError):
         def __init__(self, message):
