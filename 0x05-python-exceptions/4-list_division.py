@@ -11,7 +11,7 @@ def list_division(my_list_1, my_list_2, list_length):
                     if not isinstance(val_1, (int, float)):
                         print("out of range")
                     if not isinstance(val_2, (int, float)):
-                        print("Wrong type")
+                        print("wrong type")
                     result.append(0)
                 elif val_2 == 0:
                     print("division by 0")
@@ -19,15 +19,11 @@ def list_division(my_list_1, my_list_2, list_length):
                 else:
                     result.append(val_1 / val_2)
                     
-            except IndexError:
-                pass
+            except (IndexError, TypeError):
+                print("out of range")
+                result.append(0)
     
     except:
         pass
-    
-    if len(result) < list_length:
-        print("out of range")
-        while len(result) < list_length:
-            result.append(0)
     
     return result
