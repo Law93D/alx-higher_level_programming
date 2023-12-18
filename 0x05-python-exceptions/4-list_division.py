@@ -1,29 +1,32 @@
 #!/usr/bin/python3
 def list_division(my_list_1, my_list_2, list_length):
     result = []
-    try:
-        for i in range(list_length):
-            try:
-                val_1 = my_list_1[i] if i < len(my_list_1) else None
-                val_2 = my_list_2[i] if i < len(my_list_2) else None
-                
-                if not (isinstance(val_1, (int, float)) and isinstance(val_2, (int, float))):
-                    if not isinstance(val_1, (int, float)):
-                        print("out of range")
-                    if not isinstance(val_2, (int, float)):
-                        print("wrong type")
-                    result.append(0)
-                elif val_2 == 0:
-                    print("division by 0")
-                    result.append(0)
-                else:
-                    result.append(val_1 / val_2)
-                    
-            except (IndexError, TypeError):
-                print("out of range")
-                result.append(0)
+    for i in range(list_length):
+        try:
+            element_1 = my_list_1[i] if i < len(my_list_1) else None
+            element_2 = my_list_2[i] if i < len(my_list_2) else None
+            
+            if element_1 is None or element_2 is None:
+                raise IndexError("out of range")
+            
+            if not isinstance(element_1, (int, float)) or not isinstance(element_2, (int, float)):
+                raise TypeError("wrong type")
+            
+            if element_2 == 0:
+                raise ZeroDivisionError("division by 0")
+            
+            result.append(element_1 / element_2)
+        
+        except ZeroDivisionError:
+            print("division by 0")
+            result.append(0)
+        
+        except TypeError:
+            print("wrong type")
+            result.append(0)
+        
+        except IndexError:
+            print("out of range")
+            result.append(0)
     
-    except:
-        pass
-    
-    return result
+    return result[:list_length]
