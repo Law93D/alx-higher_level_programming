@@ -2,6 +2,7 @@
 """Defines a Node class and a SinglyLinkedList class."""
 
 
+
 class Node:
     """Node class"""
 
