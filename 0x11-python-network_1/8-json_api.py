@@ -7,14 +7,13 @@ import requests
 import sys
 
 if __name__ == "__main__":
-    if len(sys.argv) == 1:
+    if len(sys.argv) < 2:
         q = ""
     else:
         q = sys.argv[1]
     url = "http://0.0.0.0:5000/search_user"
-    data = {"q": q}
-    response = requests.post(url, data=data)
     try:
+        response = requests.post(url, data={"q": q})
         json_response = response.json()
         if json_response:
             print("[{}] {}".format(json_response.get("id"), json_response.get("name")))
