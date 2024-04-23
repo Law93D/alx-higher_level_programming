@@ -9,5 +9,5 @@ fs.writeFile(filePath, content, 'utf-8', (err) => {
 		console.error(err);
 		return;
 		}
-	console.log('The file has been saved!');
+	console.log(content);
 });
