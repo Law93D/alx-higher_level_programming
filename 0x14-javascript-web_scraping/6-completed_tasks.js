@@ -19,4 +19,15 @@ request(apiUrl, function (error, response, body) {
           completed[todo.userId]++;
         }
        }
-      });
+     });
+
+   const output = `{${Object.entries(completed).map(([key, value]) => ` '${key}': ${value}`).join(',\n ')} }`;
+
+   console.log(Object.keys(completed).length > 2 ? output : completed);
+  } catch (parseError) {
+    console.error('Error parsing JSON:', parseError);
+  }
+ } else {
+   console.error('Error:', error);
+ }
+});
